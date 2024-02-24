@@ -22,10 +22,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Enumerated(EnumType.STRING)
-    private IdType idType;
 
     @Column
     private String name;

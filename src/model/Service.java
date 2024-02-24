@@ -4,41 +4,20 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-public class Service implements ServiceType{
-    private UUID id;
+public class Service {
+    private int id;
     private LocalDate createdDate;
     private State state;
-    private List<String> serviceTypes;
+    private List<ServiceTypes> serviceTypes;
 
-    @Override
-    public void useSimCard() {
-        System.out.println("Using SimCard...");
-        serviceTypes.add("Simcard");
-    }
-    @Override
-    public void useVoice() {
-        System.out.println("Using Voice...");
-        serviceTypes.add("Voice");
-    }
-    @Override
-    public void sendSMS() {
-        System.out.println("Sending SMS...");
-        serviceTypes.add("SMS");
-    }
-    @Override
-    public void useData() {
-        System.out.println("Using Data...");
-        serviceTypes.add("Data");
-    }
-
-    public Service(State state){
-
-        this.id = UUID.randomUUID();
-        this.createdDate = LocalDate.now();
+    public Service(int id, LocalDate createdDate, State state, List<ServiceTypes> serviceTypes) {
+        this.id = id;
+        this.createdDate = createdDate;
         this.state = state;
+        this.serviceTypes = serviceTypes;
     }
 
-    public UUID getId(){
+    public int getId(){
         return id;
     }
 
@@ -50,6 +29,10 @@ public class Service implements ServiceType{
     }
     public void setState(State state){
         this.state = state;
+    }
+
+    public List<ServiceTypes> getServiceTypes(){
+        return serviceTypes;
     }
 
     @Override

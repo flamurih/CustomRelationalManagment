@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.UUID;
 
 public class Product{
-    private UUID id;
+    private int id;
     private String name;
     private double price;
     private LocalDate fromDateTime;
     private LocalDate toDateTime;
     private List<Service> services;
 
-    public Product(String name, double price,
+    public Product(int id,String name, double price,
                    LocalDate fromDateTime, LocalDate toDateTime, List<Service> services) {
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.name = name;
         this.price = price;
         this.fromDateTime = fromDateTime;
@@ -26,14 +26,14 @@ public class Product{
 
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
     public void addServiceType(Service service) {
         services.add(service);
     }
-    public List<Service> getServiceTypes() {
+    public List<Service> getServices() {
         return services;
     }
     public void setServiceTypes(List<Service> services) {
@@ -55,19 +55,19 @@ public class Product{
         this.price = price;
     }
 
-    public LocalDate getFromDate() {
+    public LocalDate getFromDateTime() {
         return fromDateTime;
     }
 
-    public void setFromDate(LocalDate fromDateTime) {
+    public void setFromDateTime(LocalDate fromDateTime) {
         this.fromDateTime = fromDateTime;
     }
 
-    public LocalDate getToDate() {
+    public LocalDate getToDateTime() {
         return toDateTime;
     }
 
-    public void setToDate(LocalDate toDateTime) {
+    public void setToDateTime(LocalDate toDateTime) {
         this.toDateTime = toDateTime;
     }
     public void setServices(List<Service> services){
@@ -109,6 +109,5 @@ public class Product{
 
         return sb.toString();
     }
-
 
 }

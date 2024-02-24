@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Customer
 {
-    private UUID id;
+    private int id;
     private LocalDate createdDate;
     private CustomerType customerType;
     private State state;
@@ -15,8 +15,8 @@ public class Customer
     private Contact contact;
 
 
-    public Customer (CustomerType customerType, State state, List<Contract> contracts, Contact contact) throws CustomerException {
-        id = UUID.randomUUID();
+    public Customer (int id, LocalDate createdDate, CustomerType customerType, State state, List<Contract> contracts, Contact contact) throws CustomerException {
+        this.id = id;
         this.createdDate = LocalDate.now();
         this.customerType = customerType;
         this.state = state;
@@ -24,7 +24,7 @@ public class Customer
         this.contact = contact;
     }
 
-    public UUID getId(){
+    public int getId(){
         return id;
     }
     public LocalDate getCreatedDate(){
@@ -42,8 +42,8 @@ public class Customer
     public Contact getContact(){
         return contact;
     }
-    public void getContracts(){
-        contracts.stream().forEach(System.out::print);
+    public List<Contract> getContracts(){
+        return contracts;
     }
 
     public void setCustomerType(CustomerType customerType){

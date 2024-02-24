@@ -10,34 +10,33 @@ import java.util.List;
 
 public class CustomerServiceImpl implements TelecomService<Customer> {
     private TelecomRepository customerRepository;
-    private List<Customer> customers = new ArrayList<>();
 
     public CustomerServiceImpl(){
-       // this.customerRepository = new CustomerFileRepository(path);
+        this.customerRepository = new CustomerFileRepository();
     }
     @Override
     public void create(Customer entity) {
-        customers.add(entity);
+        customerRepository.create(entity);
     }
 
     @Override
     public void update(Customer entity) {
-        // Implement update logic
+        customerRepository.update(entity);
     }
 
     @Override
     public boolean deleteById(int id) {
 
-        return true;
+        return customerRepository.deleteById(id);
     }
 
     @Override
     public Customer findById(int id) {
-        return null;
+        return (Customer) customerRepository.findById(id);
     }
 
     @Override
     public List<Customer> findAll() {
-        return customers;
+        return customerRepository.findAll();
     }
 }

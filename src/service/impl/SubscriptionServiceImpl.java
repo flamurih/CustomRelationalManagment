@@ -1,47 +1,47 @@
 package service.impl;
 
 import model.Subscription;
+import repository.TelecomRepository;
+import repository.impl.SubscriptionFileRepository;
 import service.TelecomService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionServiceImpl implements TelecomService<Subscription> {
-    private List<Subscription> subscriptionList = new ArrayList<>();
-    private TelecomService subscriptionRepository;
-    private final String path = "C:\\Users\\Flamur\\Desktop\\JAVA-WORKSPACE\\JavaProject\\src";
+    private TelecomRepository subscriptionRepository;
 
     public SubscriptionServiceImpl(){
-        //this.subscriptionRepository = new SubscriptionFileRepository(path);
+        this.subscriptionRepository = new SubscriptionFileRepository();
     }
     @Override
     public void create(Subscription subscription) {
-        subscriptionList.add(subscription);
+        subscriptionRepository.create(subscription);
     }
 
     @Override
     public Subscription findById(int id) {
-        return null;
+        return (Subscription) subscriptionRepository.findById(id);
     }
 
     @Override
     public List<Subscription> findAll() {
-        return subscriptionList;
+        return subscriptionRepository.findAll();
     }
 
-    public boolean delete(Subscription subscription) {
-        subscriptionList.remove(subscription);
+    public boolean delete(int id) {
+        subscriptionRepository.deleteById(id);
         return true;
     }
 
     @Override
     public void update(Subscription subscription) {
-        //Update logic
+        subscriptionRepository.update(subscription);
     }
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        return subscriptionRepository.deleteById(id);
     }
 
 }

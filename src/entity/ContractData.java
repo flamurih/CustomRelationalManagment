@@ -24,9 +24,10 @@ import java.util.List;
 @NoArgsConstructor
 public class ContractData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
+    @Column(name = "created_date")
     private LocalDate createdDate;
 
     @Enumerated(EnumType.STRING)
@@ -41,5 +42,4 @@ public class ContractData {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
-
 }

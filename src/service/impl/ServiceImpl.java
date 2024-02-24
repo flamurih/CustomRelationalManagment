@@ -2,13 +2,17 @@ package service.impl;
 
 import model.Service;
 import repository.ServiceRepository;
+import repository.impl.ServiceFileRepository;
 import service.ServiceService;
 
 import java.util.List;
 
 public class ServiceImpl implements ServiceService {
+
     private ServiceRepository serviceRepository;
-    private final String path = "C:\\Users\\Flamur\\Desktop\\JAVA-WORKSPACE\\JavaProject\\src";
+    public ServiceImpl(){
+        this.serviceRepository = new ServiceFileRepository();
+    }
 
     @Override
     public void create(Service service) {
@@ -16,7 +20,8 @@ public class ServiceImpl implements ServiceService {
     }
 
     @Override
-    public void findById(int id) {
+    public Service findById(int id) {
+        return serviceRepository.findById(id);
     }
 
     @Override
@@ -34,8 +39,4 @@ public class ServiceImpl implements ServiceService {
         serviceRepository.update(service);
     }
 
-    @Override
-    public int count() {
-        return 0;
-    }
 }

@@ -1,11 +1,41 @@
-<?xml version = "1.0" encoding = "utf-8"?>
-<!DOCTYPE hibernate-configuration SYSTEM
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
     <session-factory>
-         <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/Telecomservice</property>
-        <property name = "hibernate.connection.username">root</property>
-        <property name = "hibernate.connection.password">16101998</property>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/telecomservice</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">16101998</property>
+
+        <!-- JDBC connection pool settings -->
+        <property name="hibernate.connection.pool_size">5</property>
+
+        <!-- SQL dialect for MySQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Mapping files -->
+        <mapping class="entity.ContactData"/>
+        <mapping class="entity.ContractData"/>
+        <mapping class="entity.CustomerData"/>
+        <mapping class="entity.ServiceData"/>
+        <mapping class="entity.SubscriptionData"/>
+        <mapping class="entity.ProductData"/>
+
     </session-factory>
 </hibernate-configuration>

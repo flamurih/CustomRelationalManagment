@@ -24,7 +24,7 @@ public class ContactFileRepository implements ContactRepository {
         try{
             Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
             sessionFactory = new Configuration()
-                    .configure("C:\\Users\\Flamur\\Desktop\\JAVA-WORKSPACE\\JavaProjekti\\src\\hibernate.cfg.xml")
+                    .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(ContactData.class)
                     .buildSessionFactory();
 

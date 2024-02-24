@@ -9,6 +9,7 @@ import model.State;
 import model.Contract;
 import model.Contact;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -23,10 +24,11 @@ import java.util.List;
 @NoArgsConstructor
 public class CustomerData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
-    private String name;
+    private LocalDate createdDate;
 
     @Enumerated(EnumType.STRING)
     private CustomerType customerType;

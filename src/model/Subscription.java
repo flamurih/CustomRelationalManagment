@@ -4,17 +4,16 @@ import exception.SubscriptionException;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 public class Subscription {
-    private UUID id;
+    private int id;
     private String phoneNumber;
     private LocalDate createdDate;
     private State state;
     private List<Service> services;
     private Contact contact;
 
-    public Subscription(String phoneNumber, State state, List<Service> services, Contact contact) throws SubscriptionException {
+    public Subscription(int id, String phoneNumber,LocalDate createdDate, State state, List<Service> services, Contact contact) throws SubscriptionException {
         if (!phoneNumber.matches("^\\+3834[4-6][1-9]\\d{5}$")) {
             throw new SubscriptionException("Phone number is not valid.");
         }
@@ -22,7 +21,7 @@ public class Subscription {
             throw new SubscriptionException("Contact is not subscription allowed");
         }
 
-        id = UUID.randomUUID();
+        this.id = id;
         this.phoneNumber = phoneNumber;
         this.createdDate = LocalDate.now();
         this.state = state;
@@ -30,7 +29,9 @@ public class Subscription {
         this.contact = contact;
     }
 
-
+    public int getId(){
+        return id;
+    }
     public String getPhoneNumber(){
         return phoneNumber;
     }
@@ -43,16 +44,19 @@ public class Subscription {
         return state;
     }
 
+    public Contact getContact(){
+        return contact;
+    }
+
+    public List<Service> getServices(){
+        return services;
+    }
     public void setPhoneNumber(String number){
         phoneNumber = number;
-    }
-    public State isActive() {
-        return state;
     }
     public void addService(Service service) {
         services.add(service);
     }
-
 
     public String toString(){
         StringBuilder sb = new StringBuilder();

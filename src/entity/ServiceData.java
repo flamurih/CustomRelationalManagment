@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import model.ServiceTypes;
 import model.State;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -21,13 +22,16 @@ import java.util.List;
 @NoArgsConstructor
 public class ServiceData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column
-    private String name;
+    private LocalDate createdDate;
+
     @Enumerated(EnumType.STRING)
     private State state;
+
     @Enumerated(EnumType.STRING)
-    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     private List<ServiceTypes> serviceTypes;
 
 }

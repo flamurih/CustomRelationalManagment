@@ -1,37 +1,43 @@
 package service.impl;
 
 import model.Product;
+import repository.ProductRepository;
+import repository.impl.ProductFileRepository;
 import service.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    List<Product> productList = new ArrayList<>();
+
+    private ProductRepository productRepository;
+    public ProductServiceImpl(){
+        this.productRepository = new ProductFileRepository();
+    }
     @Override
     public void create(Product product) {
-        productList.add(product);
+        productRepository.create(product);
     }
 
     @Override
     public void findById(int id) {
-
+        productRepository.findById(id);
     }
 
     @Override
     public List<Product> findAll() {
-        return productList;
+        return productRepository.findAll();
     }
 
     @Override
-    public boolean delete(Product product) {
-        productList.remove(product);
+    public boolean delete(int id) {
+        productRepository.deleteById(id);
         return true;
     }
 
     @Override
     public void update(Product product) {
-
+        productRepository.update(product);
     }
 
 

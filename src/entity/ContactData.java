@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.Gender;
-import model.IdType;
-import model.State;
+import model.*;
 
 import java.time.LocalDate;
 
@@ -22,6 +20,7 @@ import java.time.LocalDate;
 })
 public class ContactData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Enumerated(EnumType.STRING)

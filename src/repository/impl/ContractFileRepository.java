@@ -1,6 +1,5 @@
 package repository.impl;
 
-import entity.ContactData;
 import entity.ContractData;
 import exception.ContractException;
 import jakarta.persistence.NoResultException;
@@ -26,8 +25,8 @@ public class ContractFileRepository implements TelecomRepository<Contract> {
         try{
             Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
             sessionFactory = new Configuration()
-                    .configure("C:\\Users\\Flamur\\Desktop\\JAVA-WORKSPACE\\JavaProjekti\\src\\hibernate.cfg.xml")
-                    .addAnnotatedClass(ContactData.class)
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(ContractData.class)
                     .buildSessionFactory();
         }
         catch(HibernateException e){

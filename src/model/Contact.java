@@ -2,6 +2,7 @@ package model;
 
 import exception.ContactException;
 import exception.CustomerException;
+import jakarta.persistence.Entity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -99,7 +100,6 @@ public class Contact {
     public void setState(State state) {
         this.state = state;
     }
-
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("Contact ID: ").append(id).append("\n");

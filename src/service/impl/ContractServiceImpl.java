@@ -26,7 +26,7 @@ public class ContractServiceImpl implements TelecomService<Contract> {
 
     @Override
     public Contract findById(int id) {
-        return contractRepository.findById(id);
+        return (Contract) contractRepository.findById(id);
     }
 
     @Override

@@ -11,7 +11,7 @@ public interface ProductService {
 
     List<Product> findAll();
 
-    boolean delete(Product product);
+    boolean delete(int id);
 
     void update(Product product);
 

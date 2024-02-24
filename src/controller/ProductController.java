@@ -18,8 +18,8 @@ public class ProductController {
         System.out.printf("%s added. %n",product);
     }
 
-    public void delete(Product product){
-        boolean deleted = productService.delete(product);
+    public void delete(int id){
+        boolean deleted = productService.delete(id);
         System.out.printf("Consumer deleted. %b%n",deleted);
     }
 

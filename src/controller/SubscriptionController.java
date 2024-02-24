@@ -1,5 +1,6 @@
 package controller;
 
+import model.Contact;
 import model.Subscription;
 import service.TelecomService;
 import service.impl.SubscriptionServiceImpl;
@@ -9,8 +10,8 @@ import java.util.List;
 public class SubscriptionController {
     private TelecomService<Subscription> subscriptionService;
 
-    public SubscriptionController(TelecomService<Subscription> subscriptionService){
-        this.subscriptionService = subscriptionService;
+    public SubscriptionController(){
+        this.subscriptionService = new SubscriptionServiceImpl();
     }
 
     public void add(Subscription subscription){
@@ -18,9 +19,16 @@ public class SubscriptionController {
         System.out.printf("%s added. %n",subscription);
     }
 
-//    public Subscription update(Subscription subscription){
-//
-//    }
+    public List<Subscription> getAll(){
+        return subscriptionService.findAll();
+    }
+    public void update(Subscription subscription) {
+        subscriptionService.update(subscription);
+    }
+
+    public Subscription getById(int id) {
+        return subscriptionService.findById(id);
+    }
 
     public void delete(int id){
         boolean deleted = subscriptionService.deleteById(id);
